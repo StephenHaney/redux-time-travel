@@ -12,7 +12,8 @@
     "lint": "eslint src",
     "test": "",
     "build": "npm-run-all --parallel build:*",
-    "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib"
+    "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib",
+    "prepublish": "npm run lint && npm run test && npm run clean && npm run build"
   },
   "repository": {
     "type": "git",
