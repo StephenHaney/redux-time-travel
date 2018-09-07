@@ -1,15 +1,20 @@
-# redux-time-travel v0.1
+# redux-time-travel - alpha
 A scalable undo redo time travel implementation that leaves your original state intact... powered by diffs and merges.
+
+![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)
+![npm](https://img.shields.io/npm/v/:package.svg)
+![npm bundle size (minified)](https://img.shields.io/bundlephobia/min/react.svg)
+
 
 ## Quick Start
 
 ### Installation:
-`npm install redux-time-travel`
+`npm i redux-time-travel --save`
 
 ### Wire up:
 1. In your store file, import the `createTimeTravelMiddleware` and `timeTravelReducer` functions:
 ```
-import createTimeTravelMiddleware, { timeTravelReducer}  from 'redux-time-travel';
+import createTimeTravelMiddleware, { timeTravelReducer } from 'redux-time-travel';
 ```
 
 2. Wrap your combined reducers in the reducer function:
