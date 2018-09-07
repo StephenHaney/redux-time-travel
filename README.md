@@ -7,10 +7,9 @@ A scalable undo redo time travel implementation that leaves your original state 
 `npm install redux-time-travel`
 
 ### Wire up:
-1. In your store file, import the `timeTravelReducer` and `createTimeTravelMiddleware` functions:
+1. In your store file, import the `createTimeTravelMiddleware` and `timeTravelReducer` functions:
 ```
-import createTimeTravelMiddleware from 'redux-time-travel/timeTravelMiddleware';
-import timeTravelReducer from 'redux-time-travel/timeTravelReducer';
+import createTimeTravelMiddleware, { timeTravelReducer}  from 'redux-time-travel';
 ```
 
 2. Wrap your combined reducers in the reducer function:
@@ -32,7 +31,7 @@ const store = createStore(timeTravelReducer, initialState, applyMiddleware(timeT
 ### Undo / Redo:
 1. In the file where you'd like to trigger a time travel event, import the time travel action creators:
 ```
-import { timeTravelBackward, timeTravelForward } from 'redux-time-travel/timeTravelActions';
+import { timeTravelBackward, timeTravelForward } from 'redux-time-travel';
 ```
 
 2. In your connect function, add the time travel action creators to the mapDispatchToProps:
