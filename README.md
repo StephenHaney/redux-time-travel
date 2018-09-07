@@ -3,7 +3,7 @@ A scalable undo redo time travel implementation that leaves your original state 
 
 [![npm](https://img.shields.io/npm/v/redux-time-travel.svg)](https://www.npmjs.com/package/redux-time-travel)
 [![NpmLicense](https://img.shields.io/npm/l/redux-time-travel.svg)](https://www.npmjs.com/package/redux-time-travel)
-[![style](https://img.shields.io/badge/code_style-airbnb-green.svg)] (https://www.npmjs.com/package/redux-time-travel)
+[![style](https://img.shields.io/badge/code_style-airbnb-green.svg)](https://www.npmjs.com/package/redux-time-travel)
 [![dependencies Status](https://david-dm.org/stephenhaney/redux-time-travel/status.svg)](https://david-dm.org/stephenhaney/redux-time-travel)
 
 ## Quick Start
