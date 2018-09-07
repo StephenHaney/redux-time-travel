@@ -1,6 +1,6 @@
 {
   "name": "redux-time-travel",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A scalable undo redo time travel implementation that leaves your original state intact... powered by diffs and merges.",
   "main": "lib/index.js",
   "files": [
