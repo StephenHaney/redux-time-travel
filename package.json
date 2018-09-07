@@ -2,9 +2,17 @@
   "name": "redux-time-travel",
   "version": "0.0.1",
   "description": "A scalable undo redo time travel implementation that leaves your original state intact... powered by diffs and merges.",
-  "main": "src/index.js",
+  "main": "lib/index.js",
+  "files": [
+    "lib",
+    "es"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rimraf lib",
+    "lint": "eslint src",
+    "test": "",
+    "build": "npm-run-all --parallel build:*",
+    "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib"
   },
   "repository": {
     "type": "git",
@@ -23,5 +31,58 @@
   "bugs": {
     "url": "https://github.com/StephenHaney/redux-time-travel/issues"
   },
-  "homepage": "https://github.com/StephenHaney/redux-time-travel#readme"
+  "homepage": "https://github.com/StephenHaney/redux-time-travel#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ],
+    "*.{css,md,json}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "babel": {
+    "presets": [
+      "env",
+      "minify"
+    ],
+    "plugins": [
+      "transform-object-rest-spread",
+      "add-module-exports"
+    ]
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^9.0.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-minify": "^0.4.3",
+    "cross-env": "^5.2.0",
+    "eslint": "^5.5.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.1",
+    "husky": "^0.14.3",
+    "install": "^0.12.1",
+    "jest": "^23.5.0",
+    "lint-staged": "^7.2.2",
+    "npm": "^6.4.1",
+    "npm-run-all": "^4.1.3",
+    "prettier": "^1.14.2",
+    "rimraf": "^2.6.2"
+  },
+  "dependencies": {
+    "babel-plugin-transform-es2015-modules-systemjs": "^6.24.1",
+    "redux-undo": "^0.6.1"
+  }
 }

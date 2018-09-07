@@ -1,0 +1,15 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "jest": true,
+    "browser": true
+  },
+  "extends": "airbnb",
+  "plugins": ["react", "jsx-a11y", "import"],
+  "rules": {
+    "no-console": 0,
+
+    "max-len": ["warn", { "code": 160, "ignoreComments": true, "ignoreTrailingComments": true, "ignoreUrls": true }],
+    "no-restricted-syntax": ["warn", "ForInStatement", "LabeledStatement", "WithStatement"]
+  }
+}
