@@ -1,10 +1,9 @@
 # redux-time-travel - alpha
 A scalable undo redo time travel implementation that leaves your original state intact... powered by diffs and merges.
 
-![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)
-![npm](https://img.shields.io/npm/v/:package.svg)
-![npm bundle size (minified)](https://img.shields.io/bundlephobia/min/react.svg)
-
+![NpmLicense](https://img.shields.io/npm/l/redux-time-travel.svg)
+![style](https://img.shields.io/badge/style-airbnb-green.svg)
+![npm](https://img.shields.io/npm/v/redux-time-travel.svg)
 
 ## Quick Start
 
