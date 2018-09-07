@@ -1,0 +1,27 @@
+{
+  "name": "redux-time-travel",
+  "version": "0.0.1",
+  "description": "A scalable undo redo time travel implementation that leaves your original state intact... powered by diffs and merges.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StephenHaney/redux-time-travel.git"
+  },
+  "keywords": [
+    "redux",
+    "undo",
+    "redo",
+    "time",
+    "travel",
+    "react"
+  ],
+  "author": "Stephen Haney",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/StephenHaney/redux-time-travel/issues"
+  },
+  "homepage": "https://github.com/StephenHaney/redux-time-travel#readme"
+}

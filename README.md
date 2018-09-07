@@ -13,21 +13,15 @@ import createTimeTravelMiddleware from 'redux-time-travel/timeTravelMiddleware';
 import timeTravelReducer from 'redux-time-travel/timeTravelReducer';
 ```
 
-2. Configure options (all optional) and instantiate the middleware:
-```
-const timeTravelOptions = {
-  slicesToWatch: ['slices', 'of', 'state', 'to', 'track'],
-  maxHistoryLength: 30,
-  actionsToIgnore: [ACTION_TYPE_TO_IGNORE_1, ACTION_TYPE_TO_IGNORE_2],
-  actionsToGroup: [ [GROUPED_ACTION_1, GROUPED_ACTION_2] ],
-};
-const timeTravel = createTimeTravelMiddleware(timeTravelOptions);
-```
-
-3. Wrap your combined reducers in the reducer function:
+2. Wrap your combined reducers in the reducer function:
 ```
 const appReducers = combineReducers({ appReducer1, appReducer2 });
 const timeTravelReducer = timeTravelReducer(appReducers);
+```
+
+3. Instantiate the middleware (see Settings section below for configuration):
+```
+const timeTravel = createTimeTravelMiddleware();
 ```
 
 4. Create your store with the timeTravel middleware:
@@ -55,7 +49,7 @@ this.props.timeTravelBackward();
 ## Settings
 _TODO_
 
-## Current Limitations
+## Future Improvements
 _TODO_
 
 ## Performance
