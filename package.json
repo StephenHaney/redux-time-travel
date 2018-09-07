@@ -50,8 +50,7 @@
   },
   "babel": {
     "presets": [
-      "env",
-      "minify"
+      "env"
     ],
     "plugins": [
       "transform-object-rest-spread",
@@ -65,7 +64,6 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
-    "babel-preset-minify": "^0.4.3",
     "cross-env": "^5.2.0",
     "eslint": "^5.5.0",
     "eslint-config-airbnb": "^17.1.0",
