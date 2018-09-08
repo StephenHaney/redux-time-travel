@@ -30,7 +30,6 @@ const store = createStore(rootReducer, initialState, applyMiddleware(timeTravel)
 ```
 // Wherever you need to trigger time travel events, import the time travel action creators:
 import { timeTravelBackward, timeTravelForward } from 'redux-time-travel';
-
 ```
 
 In your connect function, add the time travel action creators to the mapDispatchToProps:
@@ -55,35 +54,12 @@ You can change settings by providing a configuration object to the middleware cr
   slicesToWatch: array of strings
   actionsToIgnore: array of strings (action types)
   actionsToGroup: array of arrays of strings (action types)
-};
+}
 ```
 
 ### Options
 
-#### maxHistoryLength
-_int_
-Specify the number of history events that will be cached. Higher settings allow more undo events, but take up more memory.
-
-#### slicesToWatch
-_array of strings_
-By default, Redux Time Travel will keep track of all slices in your state and move them forward or backward with time travel events. Often, we only need to undo/redo slices of our state (like a user changing a value) while ignoring other slices of our state (like the currently authorized user). You can use slicesToWatch to specify the state slices that should be impacted by undos and redos.
-
-#### actionsToIgnore (usually unnecessary)
-_array of strings (action types)_
-By default, Redux Time Travel pays attention to every action and keeps track of the resulting changes. If you know certain actions will never impact slices of state that you want to undo/redo, you can tell Redux Time Travel to ignore these actions, which saves some 
-
-__IMPORTANT:__ actionsToIgnore is potentially dangerous and usually premature optimization. If you accidentally tell Redux Time Travel to ignore an action that DOES end up impacting a slice of state that is watched and time travels, you can push your state unrecoverably out of sync. 
-
-#### actionsToGroup
-Sometimes a single undo should undo multiple actions. Common use cases include creating a new entry in state, and then in a separate action assocating it with another element as a child or parent.
-
-You can tell Redux Time Travel to treat multiple concurrent actions as one change event by specifying actionsToGroup.
-
-A few limitations:
-1. Currently, each action type can only belong to one group.
-2. Actions cannot group with themselves... e.g., 2 concurrent actions of the same type will always create 2 change events.
-
-### Example Options
+#### Example Middleware with Options
 ```
 const timeTravelOptions = {
   maxHistoryLength: 30,
@@ -98,6 +74,34 @@ const timeTravelOptions = {
 };
 const timeTravel = createTimeTravelMiddleware(timeTravelOptions);
 ```
+
+#### maxHistoryLength
+_int_
+
+Specify the number of history events that will be cached. Higher settings allow more undo events, but take up more memory.
+
+#### slicesToWatch
+_array of strings_
+
+By default, Redux Time Travel will keep track of all slices in your state and move them forward or backward with time travel events. Often, we only need to undo/redo slices of our state (like a user changing a value) while ignoring other slices of our state (like the currently authorized user). You can use slicesToWatch to specify the state slices that should be impacted by undos and redos.
+
+#### actionsToIgnore (usually unnecessary)
+_array of strings (action types)_
+
+By default, Redux Time Travel pays attention to every action and keeps track of the resulting changes. If you know certain actions will never impact slices of state that you want to undo/redo, you can tell Redux Time Travel to ignore these actions, which saves some 
+
+__IMPORTANT:__ actionsToIgnore is potentially dangerous and usually premature optimization. If you accidentally tell Redux Time Travel to ignore an action that DOES end up impacting a slice of state that is watched and time travels, you can push your state unrecoverably out of sync. 
+
+#### actionsToGroup
+_array of array of strings (action types)_
+
+Sometimes a single undo should undo multiple actions. Common use cases include creating a new entry in state, and then in a separate action assocating it with another element as a child or parent.
+
+You can tell Redux Time Travel to treat multiple concurrent actions as one change event by specifying actionsToGroup.
+
+A few limitations:
+1. Currently, each action type can only belong to one group.
+2. Actions cannot group with themselves... e.g., 2 concurrent actions of the same type will always create 2 change events.
 
 ## Future Improvements
 1. Tests written for 100% coverage
