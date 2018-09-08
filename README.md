@@ -1,4 +1,4 @@
-# redux-time-travel
+# Redux Time Travel
 A scalable undo redo time travel implementation that leaves your original state intact... powered by diffs and merges.
 
 [![npm](https://img.shields.io/npm/v/redux-time-travel.svg)](https://www.npmjs.com/package/redux-time-travel)
