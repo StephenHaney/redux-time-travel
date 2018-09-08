@@ -47,19 +47,7 @@ this.props.timeTravelForward();
 ```
 
 ## Settings
-You can change settings by providing a configuration object to the middleware creator:
-```
-{
-  maxHistoryLength: int
-  slicesToWatch: array of strings
-  actionsToIgnore: array of strings (action types)
-  actionsToGroup: array of arrays of strings (action types)
-}
-```
-
-### Options
-
-#### Example Middleware with Options
+You can change settings by providing a configuration object to the middleware creator. Here is an example:
 ```
 const timeTravelOptions = {
   maxHistoryLength: 30,
@@ -74,6 +62,8 @@ const timeTravelOptions = {
 };
 const timeTravel = createTimeTravelMiddleware(timeTravelOptions);
 ```
+
+### Options
 
 #### maxHistoryLength
 _int_
