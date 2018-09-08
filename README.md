@@ -23,7 +23,6 @@ const timeTravel = createTimeTravelMiddleware();
 
 // Invoke Redux `createStore` with the `timeTravel` middleware:
 const store = createStore(rootReducer, initialState, applyMiddleware(timeTravel));
-
 ```
 
 ### Trigger undo and redo events
@@ -45,6 +44,7 @@ this.props.timeTravelBackward();
 // Redo forward in the history:
 this.props.timeTravelForward();
 ```
+
 
 ## Settings
 You can change settings by providing a configuration object to the middleware creator. Here is an example:
@@ -78,9 +78,9 @@ By default, Redux Time Travel will keep track of all slices in your state and mo
 #### actionsToIgnore (usually unnecessary)
 _array of strings (action types)_
 
-By default, Redux Time Travel pays attention to every action and keeps track of the resulting changes. If you know certain actions will never impact slices of state that you want to undo/redo, you can tell Redux Time Travel to ignore these actions, which saves some 
+By default, Redux Time Travel pays attention to every action and keeps track of the resulting changes. If you know certain actions will never impact slices of state that you want to undo/redo, you can tell Redux Time Travel to ignore these actions, which saves some
 
-__IMPORTANT:__ actionsToIgnore is potentially dangerous and usually premature optimization. If you accidentally tell Redux Time Travel to ignore an action that DOES end up impacting a slice of state that is watched and time travels, you can push your state unrecoverably out of sync. 
+__IMPORTANT:__ actionsToIgnore is potentially dangerous and usually premature optimization. If you accidentally tell Redux Time Travel to ignore an action that DOES end up impacting a slice of state that is watched and time travels, you can push your state unrecoverably out of sync.
 
 #### actionsToGroup
 _array of array of strings (action types)_
@@ -98,6 +98,7 @@ A few limitations:
 2. Action grouping and ignoring could be enhanced with new features (see issues for specifics)
 3. Thorough scalability and performance testing
 4. Add option to store diffs in state to allow for undo/redo persistence across browsing sessions.
+
 
 ## Performance
 
