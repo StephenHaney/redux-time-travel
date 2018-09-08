@@ -11,31 +11,26 @@ A scalable undo redo time travel implementation that leaves your original state 
 ### Installation:
 `npm i redux-time-travel --save`
 
-### Wire up:
-In your store, import the `createTimeTravelMiddleware` and `timeTravelReducer` functions:
+### Wire up your store
 ```
 import createTimeTravelMiddleware, { timeTravelReducer } from 'redux-time-travel';
-```
 
-Wrap your combined reducers in the reducer function:
-```
+// Wrap your combined reducers in the reducer function:
 const rootReducer = timeTravelReducer(combineReducers({ appReducer1, appReducer2 }));
-```
 
-Instantiate the middleware (see Settings section below for configuration):
-```
+// Instantiate the middleware (see Settings section below for configuration):
 const timeTravel = createTimeTravelMiddleware();
-```
 
-Invoke Redux `createStore` with the `timeTravel` middleware:
-```
+// Invoke Redux `createStore` with the `timeTravel` middleware:
 const store = createStore(rootReducer, initialState, applyMiddleware(timeTravel));
+
 ```
 
-### Undo / Redo:
-In the file where you'd like to trigger a time travel event, import the time travel action creators:
+### Trigger undo and redo events
 ```
+// Wherever you need to trigger time travel events, import the time travel action creators:
 import { timeTravelBackward, timeTravelForward } from 'redux-time-travel';
+
 ```
 
 In your connect function, add the time travel action creators to the mapDispatchToProps:
@@ -53,20 +48,14 @@ this.props.timeTravelForward();
 ```
 
 ## Settings
-You can change settings by providing a configuration object to the middleware creator, like this:
+You can change settings by providing a configuration object to the middleware creator:
 ```
-const timeTravelOptions = {
-  maxHistoryLength: 30,
-  slicesToWatch: ['values', 'interface'],
-  actionsToIgnore: [
-    UPDATE_AUTH_USER,
-    UPDATE_PROJECTS_META,
-  ],
-  actionsToGroup: [
-    [TREE_CREATE_NODE, TREE_INSERT_CHILD_NODE]
-   ],
+{
+  maxHistoryLength: int
+  slicesToWatch: array of strings
+  actionsToIgnore: array of strings (action types)
+  actionsToGroup: array of arrays of strings (action types)
 };
-const timeTravel = createTimeTravelMiddleware(timeTravelOptions);
 ```
 
 ### Options
@@ -93,6 +82,22 @@ You can tell Redux Time Travel to treat multiple concurrent actions as one chang
 A few limitations:
 1. Currently, each action type can only belong to one group.
 2. Actions cannot group with themselves... e.g., 2 concurrent actions of the same type will always create 2 change events.
+
+### Example Options
+```
+const timeTravelOptions = {
+  maxHistoryLength: 30,
+  slicesToWatch: ['values', 'interface'],
+  actionsToIgnore: [
+    UPDATE_AUTH_USER,
+    UPDATE_PROJECTS_META,
+  ],
+  actionsToGroup: [
+    [TREE_CREATE_NODE, TREE_INSERT_CHILD_NODE]
+   ],
+};
+const timeTravel = createTimeTravelMiddleware(timeTravelOptions);
+```
 
 ## Future Improvements
 1. Tests written for 100% coverage
