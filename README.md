@@ -78,7 +78,7 @@ By default, Redux Time Travel will keep track of all slices in your state and mo
 #### actionsToIgnore (usually unnecessary)
 _array of strings (action types)_
 
-By default, Redux Time Travel pays attention to every action and keeps track of the resulting changes. If you know certain actions will never impact slices of state that you want to undo/redo, you can tell Redux Time Travel to ignore these actions, which saves some
+By default, Redux Time Travel pays attention to every action and keeps track of the resulting changes. If you know certain actions will never impact slices of state that you want to undo/redo, you can tell Redux Time Travel to ignore these actions, which saves some effort in the middleware.
 
 __IMPORTANT:__ actionsToIgnore is potentially dangerous and usually premature optimization. If you accidentally tell Redux Time Travel to ignore an action that DOES end up impacting a slice of state that is watched and time travels, you can push your state unrecoverably out of sync.
 
