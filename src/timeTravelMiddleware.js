@@ -21,7 +21,7 @@ const createTimeTravelMiddleware = ({
   slicesToWatch = [],
   actionsToIgnore = [],
   actionsToGroup = [],
-  maxHistoryLength = 25,
+  maxHistoryLength = 100,
 } = {}) => {
   // A cache for our previousState, to compare and diff against:
   let prevState = null;
