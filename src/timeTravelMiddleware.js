@@ -135,13 +135,15 @@ const createTimeTravelMiddleware = ({
 
         // Find the diff:
         const diff = differ(prevState, nextStateToWatch);
-        diff.actionType = action.type;
 
         // Update our previous state with the new version for the next go-round:
         prevState = nextStateToWatch;
 
         // Check if we have differences and, if so, dispatch save them to our history:
         if (diff !== null) {
+          // Attach the action type to the diff:
+          diff.actionType = action.type;
+
           if (currentHistoryIndex !== 0 || lastHistoryDirection === BACKWARD_IN_TIME) {
             // We're currently in the past...
             // Chop off the abandoned future, insert our diff, and reset our current index
